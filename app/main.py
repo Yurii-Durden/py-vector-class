@@ -3,7 +3,7 @@ from math import acos, degrees, radians, cos, sin, ceil
 
 
 class Vector:
-    def __init__(self, x: int | float, y: int | float) -> None:
+    def __init__(self, x: int | float, y: int | float) -> None:  # noqa: VNE001
         self.x = round(x, 2)
         self.y = round(y, 2)
 
