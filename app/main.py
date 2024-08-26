@@ -8,10 +8,16 @@ class Vector:
         self.y_coord = round(y_coord, 2)
 
     def __add__(self, other: Vector) -> Vector:
-        return Vector(self.x_coord + other.x_coord, self.y_coord + other.y_coord)
+        return Vector(
+            self.x_coord + other.x_coord,
+            self.y_coord + other.y_coord
+        )
 
     def __sub__(self, other: Vector) -> Vector:
-        return Vector(self.x_coord - other.x_coord, self.y_coord - other.y_coord)
+        return Vector(
+            self.x_coord - other.x_coord,
+            self.y_coord - other.y_coord
+        )
 
     def __mul__(self, other: int | float | Vector) -> Vector | int | float:
         if type(other) in (int, float):
@@ -33,7 +39,10 @@ class Vector:
 
     def get_normalized(self) -> Vector:
         vector_length = self.get_length()
-        return Vector(self.x_coord / vector_length, self.y_coord / vector_length)
+        return Vector(
+            self.x_coord / vector_length,
+            self.y_coord / vector_length
+        )
 
     def angle_between(self, other_vector: Vector) -> int:
         return ceil(
