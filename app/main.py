@@ -3,26 +3,20 @@ from math import acos, degrees, radians, cos, sin, ceil
 
 
 class Vector:
-    def __init__(self, x_coord: int | float, y_coord: int | float) -> None:
-        self.x_coord = round(x_coord, 2)
-        self.y_coord = round(y_coord, 2)
+    def __init__(self, x: int | float, y: int | float) -> None:
+        self.x = round(x, 2)
+        self.y = round(y, 2)
 
     def __add__(self, other: Vector) -> Vector:
-        return Vector(
-            self.x_coord + other.x_coord,
-            self.y_coord + other.y_coord
-        )
+        return Vector(self.x + other.x, self.y + other.y)
 
     def __sub__(self, other: Vector) -> Vector:
-        return Vector(
-            self.x_coord - other.x_coord,
-            self.y_coord - other.y_coord
-        )
+        return Vector(self.x - other.x, self.y - other.y)
 
     def __mul__(self, other: int | float | Vector) -> Vector | int | float:
         if type(other) in (int, float):
-            return Vector(self.x_coord * other, self.y_coord * other)
-        return (self.x_coord * other.x_coord) + (self.y_coord * other.y_coord)
+            return Vector(self.x * other, self.y * other)
+        return (self.x * other.x) + (self.y * other.y)
 
     @classmethod
     def create_vector_by_two_points(
@@ -35,14 +29,11 @@ class Vector:
         )
 
     def get_length(self) -> int | float:
-        return (self.x_coord ** 2 + self.y_coord ** 2) ** 0.5
+        return (self.x ** 2 + self.y ** 2) ** 0.5
 
     def get_normalized(self) -> Vector:
         vector_length = self.get_length()
-        return Vector(
-            self.x_coord / vector_length,
-            self.y_coord / vector_length
-        )
+        return Vector(self.x / vector_length, self.y / vector_length)
 
     def angle_between(self, other_vector: Vector) -> int:
         return ceil(
@@ -66,7 +57,7 @@ class Vector:
         cos_theta = cos(radian)
         sin_theta = sin(radian)
 
-        new_x = self.x_coord * cos_theta - self.y_coord * sin_theta
-        new_y = self.x_coord * sin_theta + self.y_coord * cos_theta
+        new_x = self.x * cos_theta - self.y * sin_theta
+        new_y = self.x * sin_theta + self.y * cos_theta
 
         return Vector(new_x, new_y)
